@@ -2,9 +2,10 @@
 ### General specifcations ###
 #############################
 reactor = "lwr1g"
-plugins = ['bright.xsgen.pre']
+plugins = ['bright.xsgen.pre', 'bright.xsgen.buk']
 solver = 'openmc+origen'
 formats = ('brightlite',)
+formats = ()
 burn_regions = 1     # Number of burnup annular regions.
 burn_time = 6 * 365  # Number of days to burn the material [days]    
 time_step = 100      # Time step by which to increment the burn [days]
@@ -52,14 +53,6 @@ initial_heavy_metal = {     # Initial heavy metal mass fraction distribution
     }
 
 #initial_U235 = [0.02, 0.04, 0.06]
-
-initial_heavy_metal = {     # Initial heavy metal mass fraction distribution
-    922340: 0.01, 
-    922350: 0.04, 
-    922380: 0.95, 
-    }
-
-#initial_U235 = [0.02, 0.04, 0.06]
 initial_U235 = [0.03, 0.05]
 
 #sensitivity_mass_fractions = [1.1, 0.9]
@@ -70,10 +63,9 @@ fuel_chemical_form = {                 #Dictionary of initial fuel loading.
     "IHM": 1.0, 
     }	
 
-
 fuel_form_mass_weighted = True  # Flag that determines if the fuel form should be mass weighted (True) or atom weighted (False)
 
-k_particles   = 5000      #Number of particles to run per kcode cycle
+k_particles   = 500      #Number of particles to run per kcode cycle
 k_cycles      = 130       #Number of kcode cycles to run
 k_cycles_skip = 30        #Number of kcode cycles to run but not tally at the begining.
 
