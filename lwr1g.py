@@ -69,7 +69,7 @@ k_particles   = 500      #Number of particles to run per kcode cycle
 k_cycles      = 130       #Number of kcode cycles to run
 k_cycles_skip = 30        #Number of kcode cycles to run but not tally at the begining.
 
-group_structure = [1.0e-09, 10]
+group_structure = [1.0e-9, 10]
 
 # Temperature
 # Should be a positive multiple of 300 K (ie 300, 600, 900, etc)
