@@ -2,7 +2,7 @@
 ### General specifcations ###
 #############################
 reactor = "lwr1g"
-plugins = ['bright.xsgen.pre', 'bright.xsgen.buk']
+plugins = ['xsgen.pre', 'xsgen.buk']
 solver = 'openmc+origen'
 formats = ('brightlite',)
 formats = ()
@@ -13,14 +13,14 @@ time_step = 100      # Time step by which to increment the burn [days]
 verbosity = 100
 
 # Set isotopes to track
-from bright.xsgen.nuc_track import load, transmute
+from xsgen.nuc_track import load, transmute
 core_load_nucs = load            # Initial core loading nuclide list or file
 core_transmute_nucs = transmute  # Transmutation tracking nuclide list or file
-
+core_transmute_nucs = ['cf252', 'u235', 'u238', 'o16', 'h1']  # Transmutation tracking nuclide list or file
 
 # Load stock template string from char
 # Having this allows users to specify other templates
-#from bright.xsgen.templates.lwr import serpent
+#from xsgen.templates.lwr import serpent
 #xs_gen_template = serpent.xs_gen
 #burnup_template = serpent.burnup
 
