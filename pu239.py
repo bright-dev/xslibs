@@ -50,18 +50,14 @@ fuel_specific_power = 40.0 / 1000.0   # Power garnered from fuel [W / g]
 ###########################
 # LEU
 initial_heavy_metal = {     # Initial heavy metal mass fraction distribution
-    922350: 0.04,
-    922380: 0.96,
+    942390: 1.0
     }
 
-#initial_U235 = [0.02, 0.04, 0.06]
 initial_U235 = [0.03, 0.05]
 
 #sensitivity_mass_fractions = [1.1, 0.9]
 
-# UOX
 fuel_chemical_form = {                 #Dictionary of initial fuel loading.
-    80160: 2.0,
     "IHM": 1.0,
     }
 
@@ -78,38 +74,6 @@ group_structure = logspace(-9, 1, 10)
 # Should be a positive multiple of 300 K (ie 300, 600, 900, etc)
 temperature = 600
 
-track_nucs = ["Ac227",
-              "Am241",
-              "AM242",
-              "BA140",
-              "C14",
-              "CM251",
-              "CS141",
-              "CS142",
-              "CS147",
-              "EU150",
-              "H1",
-              "H3",
-              "PU236",
-              "PU237",
-              "Pu238",
+track_nucs = [
               "Pu239",
-              "Pu240",
-              "Pu241",
-              "Th228",
-              "Th229",
-              "Th230",
-              "Th232",
-              "U230",
-              "U231",
-              "U232",
-              "U233",
-              "U234",
-              "U235",
-              "U236",
-              "U237",
-              "U238",
-              "U239",
-              "Zr93",
-              "ZR95",
 ]
