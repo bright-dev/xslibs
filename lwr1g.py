@@ -8,8 +8,9 @@ threads = 3
 solver = 'openmc+origen'
 formats = ('brightlite',)
 burn_regions = 1     # Number of burnup annular regions.
-burn_time = 365*3  # Number of days to burn the material [days]
+burn_time = 365  # Number of days to burn the material [days]
 time_step = 100      # Time step by which to increment the burn [days]
+batches = 3
 # burn_times = [0, 3, 100, 200, 300, 400, 500, 600, 700, 800, 900]
 
 verbosity = 100
@@ -54,8 +55,11 @@ initial_heavy_metal = {     # Initial heavy metal mass fraction distribution
     922380: 0.96,
     }
 
+enrichment = 0.04
+
 #initial_U235 = [0.02, 0.04, 0.06]
 initial_U235 = [0.03, 0.05]
+pnl = 0.96
 
 #sensitivity_mass_fractions = [1.1, 0.9]
 
@@ -87,7 +91,6 @@ track_nucs = ["Ac227",
               "CS141",
               "CS142",
               "CS147",
-              "EU150",
               "H1",
               "H3",
               "PU236",
