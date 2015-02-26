@@ -1,4 +1,4 @@
-from numpy import logspace, 
+from numpy import logspace
 #############################
 ### General specifcations ###
 #############################
