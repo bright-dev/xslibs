@@ -1,25 +1,20 @@
-from numpy import logspace
+from numpy import logspace, 
 #############################
 ### General specifcations ###
 #############################
 reactor = "lwr1g"
 plugins = ['xsgen.pre', 'xsgen.buk']
-threads = 3
 solver = 'openmc+origen'
 formats = ('brightlite',)
 burn_regions = 1     # Number of burnup annular regions.
-burn_time = 365*10  # Number of days to burn the material [days]
-time_step = 100      # Time step by which to increment the burn [days]
+# burn_time = 365*10  # Number of days to burn the material [days]
+# time_step = 100      # Time step by which to increment the burn [days]
 batches = 3
-# burn_times = [0, 3, 100, 200, 300, 400, 500, 600, 700, 800, 900]
-
-verbosity = 100
+burn_times = [0, 3]
+burn_times.extend(range(100, 4001, 100))  # we now have [0, 3, 100, 200 .. 4000]
 
 # Set isotopes to track
 from xsgen.nuc_track import load, transmute
-core_load_nucs = load            # Initial core loading nuclide list or file
-core_transmute_nucs = transmute  # Transmutation tracking nuclide list or file
-core_transmute_nucs = ['cf252', 'u235', 'u238', 'o16', 'h1']  # Transmutation tracking nuclide list or file
 
 # Load stock template string from char
 # Having this allows users to specify other templates
@@ -37,8 +32,6 @@ clad_cell_radius = 0.475
 unit_cell_pitch  = 0.65635 * 2.0
 unit_cell_height = 10.0
 
-#fuel_density = [10.7, 10.7*0.9, 10.7*1.1]   # Denisty of Fuel
-#fuel_density = [10.7*0.95, 10.7*1.05]   # Denisty of Fuel
 fuel_density = 10.7
 clad_density = 5.87                         # Cladding Density
 cool_density = 0.73                         # Coolant Density
@@ -57,8 +50,6 @@ initial_heavy_metal = {     # Initial heavy metal mass fraction distribution
 
 enrichment = 0.04
 
-#initial_U235 = [0.02, 0.04, 0.06]
-initial_U235 = [0.03, 0.05]
 pnl = 0.96
 
 #sensitivity_mass_fractions = [1.1, 0.9]
