@@ -1,4 +1,6 @@
 from numpy import logspace
+from xsgen.nuc_track import transmute
+
 #############################
 ### General specifcations ###
 #############################
@@ -7,20 +9,12 @@ plugins = ['xsgen.pre', 'xsgen.buk']
 solver = 'openmc+origen'
 formats = ('brightlite',)
 burn_regions = 1     # Number of burnup annular regions.
-# burn_time = 365*10  # Number of days to burn the material [days]
-# time_step = 100      # Time step by which to increment the burn [days]
-batches = 3
+burn_time = 365*10  # Number of days to burn the material [days]
+time_step = 100      # Time step by which to increment the burn [days]
 burn_times = [0, 3]
-burn_times.extend(range(100, 4001, 100))  # we now have [0, 3, 100, 200 .. 4000]
+burn_times.extend(range(100, 7001, 100))  # we now have [0, 3, 100, 200 .. 4000]
 
-# Set isotopes to track
-from xsgen.nuc_track import load, transmute
-
-# Load stock template string from char
-# Having this allows users to specify other templates
-#from xsgen.templates.lwr import serpent
-#xs_gen_template = serpent.xs_gen
-#burnup_template = serpent.burnup
+batches = 3
 
 
 ################################
@@ -38,10 +32,6 @@ cool_density = 0.73                         # Coolant Density
 
 fuel_specific_power = 40.0 / 1000.0   # Power garnered from fuel [W / g]
 
-
-###########################
-### MCNPX Specification ###
-###########################
 # LEU
 initial_heavy_metal = {     # Initial heavy metal mass fraction distribution
     922350: 0.04,
@@ -52,19 +42,15 @@ enrichment = 0.04
 
 pnl = 0.96
 
-#sensitivity_mass_fractions = [1.1, 0.9]
-
 # UOX
-fuel_chemical_form = {                 #Dictionary of initial fuel loading.
+fuel_chemical_form = {                 # Dictionary of initial fuel loading.
     80160: 2.0,
     "IHM": 1.0,
     }
 
-fuel_form_mass_weighted = True  # Flag that determines if the fuel form should be mass weighted (True) or atom weighted (False)
-
-k_particles   = 500      #Number of particles to run per kcode cycle
-k_cycles      = 130       #Number of kcode cycles to run
-k_cycles_skip = 30        #Number of kcode cycles to run but not tally at the begining.
+k_particles   = 500       # Number of particles to run per kcode cycle
+k_cycles      = 130       # Number of kcode cycles to run
+k_cycles_skip = 30        # Number of kcode cycles to run but not tally at the begining.
 
 # group_structure = [1.0e-9, 10]
 group_structure = logspace(-9, 1, 10)
